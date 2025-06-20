@@ -1,0 +1,187 @@
+/* General Body Styles - Keep consistent with main site */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333;
+    line-height: 1.6;
+    display: flex; /* Use flexbox to center the content */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Signup Container */
+.signup-container {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Max width for the form */
+    text-align: center;
+}
+
+.signup-header {
+    margin-bottom: 30px;
+}
+
+.signup-header h1 {
+    font-size: 2.2em;
+    color: #007bff; /* Primary blue */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-header h1 i {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.signup-header p {
+    color: #666;
+    font-size: 1em;
+}
+
+/* Form Styles */
+.signup-form {
+    text-align: left; /* Align form labels and inputs to the left */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #0056b3; /* Darker blue */
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Ensures padding doesn't increase width */
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Terms and Conditions Checkbox */
+.form-terms {
+    display: flex;
+    align-items: center;
+    margin-top: -5px; /* Adjust spacing */
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
+.form-terms input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2); /* Make checkbox slightly larger */
+}
+
+.form-terms label {
+    color: #555;
+    font-weight: 400;
+}
+
+.form-terms a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.form-terms a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.btn-signup {
+    display: block; /* Make it take full width */
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #28a745; /* Green color for signup */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-signup:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Signup Footer */
+.signup-footer {
+    margin-top: 30px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.signup-footer p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-footer p a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.signup-footer .back-home {
+    margin-top: 15px;
+}
+
+.signup-footer .back-home i {
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .signup-container {
+        padding: 30px 20px;
+        margin: 10px; /* Add margin for very small screens */
+    }
+
+    .signup-header h1 {
+        font-size: 1.8em;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    .btn-signup {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+}

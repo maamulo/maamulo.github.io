@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xogta Dhaqaalaha oo Muuqata - Maamulo Software Company</title>
+    <link rel="stylesheet" href="financial_overview.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="main-header internal-header">
+        <div class="container">
+            <div class="dashboard-header-left">
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1><i class="fas fa-chart-area"></i> Maamulo Softwere Company</h1>
+            </div>
+            <nav class="internal-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-bell"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="profile-link">
+                            <img src="https://via.placeholder.com/30" alt="User" class="profile-pic">
+                            <span>User Name</span>
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">Settings</a>
+                            <a href="#">Profile</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li class="active"><a href="financial_overview.html"><i class="fas fa-chart-area"></i> Xogta Dhaqaalaha</a></li>
+                    <li><a href="invoices.html"><i class="fas fa-file-invoice-dollar"></i> Qaansheegyo</a></li>
+                    <li><a href="#"><i class="fas fa-receipt"></i> Kharashyada</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Macaamiisha</a></li>
+                    <li><a href="#"><i class="fas fa-box"></i> Alaabta</a></li>
+                    <li><a href="#"><i class="fas fa-chart-pie"></i> Warbixinno</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <section class="dashboard-summary">
+                <div class="summary-card">
+                    <h3>Dakhliga Guud</h3>
+                    <p class="amount">$50,000</p>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="summary-card">
+                    <h3>Kharashyada Guud</h3>
+                    <p class="amount">$20,000</p>
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="summary-card">
+                    <h3>Faa'iidada (Net Profit)</h3>
+                    <p class="amount">$30,000</p>
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="summary-card">
+                    <h3>Daymaha Maqan</h3>
+                    <p class="amount overdue-amount">$8,500</p>
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+            </section>
+
+            <section class="account-balances-section">
+                <h2>Lacagaha Accounts-ka</h2>
+                <div class="account-cards-grid">
+                    <div class="account-card zaad">
+                        <img src="https://via.placeholder.com/50x50?text=ZAAD" alt="Zaad Logo" class="account-logo">
+                        <h3>ZAAD</h3>
+                        <p class="balance-amount">$12,500</p>
+                    </div>
+                    <div class="account-card edahab">
+                        <img src="https://via.placeholder.com/50x50?text=EDAHA" alt="Edahab Logo" class="account-logo">
+                        <h3>E-Dahab</h3>
+                        <p class="balance-amount">$9,800</p>
+                    </div>
+                    <div class="account-card darasalam">
+                        <img src="https://via.placeholder.com/50x50?text=DAR" alt="Darasalam Bank Logo" class="account-logo">
+                        <h3>Darasalam Bank</h3>
+                        <p class="balance-amount">$25,300</p>
+                    </div>
+                    <div class="account-card dahabshiil">
+                        <img src="https://via.placeholder.com/50x50?text=DAHA" alt="Dahabshiil Bank Logo" class="account-logo">
+                        <h3>Dahabshiil Bank</h3>
+                        <p class="balance-amount">$18,750</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-charts-grid">
+                <div class="chart-card full-width">
+                    <h3>Dakhliga Sannadkii Ugu Dambeeyay (Bil-Bil)</h3>
+                    <canvas id="annualIncomeChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Dakhliga vs. Kharashyada</h3>
+                    <canvas id="incomeVsExpensesChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Dakhliga Ilaa Ilo Kale</h3>
+                    <canvas id="revenueBySourceChart"></canvas>
+                </div>
+            </section>
+
+            <section class="overdue-debts-section">
+                <h2>Daymaha Maqan (Overdue Debts)</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#Invoice</th>
+                                <th>Macaamilka</th>
+                                <th>Wadarta</th>
+                                <th>Taariikhda Bixinta</th>
+                                <th>Xaaladda</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV003</td>
+                                <td>Ganacsi Yar</td>
+                                <td>$350.00</td>
+                                <td>2025-05-20</td>
+                                <td class="status-overdue">Dib U Dhac</td>
+                            </tr>
+                            <tr>
+                                <td>INV005</td>
+                                <td>Shirkad Weyn</td>
+                                <td>$2,000.00</td>
+                                <td>2025-06-01</td>
+                                <td class="status-overdue">Dib U Dhac</td>
+                            </tr>
+                            <tr>
+                                <td>INV008</td>
+                                <td>Qof Gaar Ah</td>
+                                <td>$150.00</td>
+                                <td>2025-06-10</td>
+                                <td class="status-overdue">Dib U Dhac</td>
+                            </tr>
+                            <tr>
+                                <td>INV012</td>
+                                <td>Macaamil Cusub</td>
+                                <td>$6,000.00</td>
+                                <td>2025-06-15</td>
+                                <td class="status-overdue">Dib U Dhac</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="top-expenses-section">
+                <h2>Kharashyada Ugu Waaweyn</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Kharashka</th>
+                                <th>Kategori</th>
+                                <th>Wadarta</th>
+                                <th>Taariikhda</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Kirada Xafiiska</td>
+                                <td>Kirada</td>
+                                <td>$5,000</td>
+                                <td>2025-06-01</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mushaharka Shaqaalaha</td>
+                                <td>Mushahar</td>
+                                <td>$4,500</td>
+                                <td>2025-06-20</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Biilka Korontada</td>
+                                <td>Utilities</td>
+                                <td>$800</td>
+                                <td>2025-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Suuq-geyn Dijital ah</td>
+                                <td>Suuq-geyn</td>
+                                <td>$750</td>
+                                <td>2025-06-12</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Dayactirka Qalabka</td>
+                                <td>Dayactir</td>
+                                <td>$600</td>
+                                <td>2025-06-05</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Data for charts (Example Data)
+        const currentYearMonths = ['July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']; // Last 12 months starting from July 2024
+        const annualIncomeData = [6500, 7200, 6800, 7500, 8000, 8200, 8500, 9000, 8800, 9200, 9500, 9800]; // Sample income for 12 months
+
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']; // For current 6 months
+        const incomeData = [5000, 7000, 6000, 8000, 7500, 9000];
+        const expensesData = [2000, 2500, 3000, 3500, 3000, 4000];
+
+        // Annual Income Chart (Line Chart for last 12 months)
+        const annualIncomeCtx = document.getElementById('annualIncomeChart').getContext('2d');
+        new Chart(annualIncomeCtx, {
+            type: 'line',
+            data: {
+                labels: currentYearMonths,
+                datasets: [{
+                    label: 'Dakhliga Sannadkii Ugu Dambeeyay',
+                    data: annualIncomeData,
+                    borderColor: '#28a745', // Green
+                    backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Bilaha'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Dakhliga ($)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Income vs. Expenses Chart (Bar Chart)
+        const incomeVsExpensesCtx = document.getElementById('incomeVsExpensesChart').getContext('2d');
+        new Chart(incomeVsExpensesCtx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Dakhliga',
+                        data: incomeData,
+                        backgroundColor: '#007bff', // Blue
+                        borderColor: '#007bff',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Kharashyada',
+                        data: expensesData,
+                        backgroundColor: '#dc3545', // Red
+                        borderColor: '#dc3545',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Revenue by Source Chart (Doughnut Chart)
+        const revenueBySourceCtx = document.getElementById('revenueBySourceChart').getContext('2d');
+        new Chart(revenueBySourceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Iibka Alaabta', 'Adeegyo', 'Iibka Online', 'Rental Income'],
+                datasets: [{
+                    data: [50, 25, 15, 10], // Example percentages
+                    backgroundColor: ['#28a745', '#ffc107', '#17a2b8', '#6c757d'], // Green, Yellow, Teal, Gray
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+
+        // Simple sidebar toggle (if you had a functional sidebar in your main-style.css)
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.dashboard-content').classList.toggle('shifted');
+        });
+    </script>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 maamulo Softwere Company Terms · Privacy · Program Policies.</p>
+
+        </div>
+    </footer>
+</body>
+</html>

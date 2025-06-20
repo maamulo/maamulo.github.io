@@ -1,0 +1,138 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px; /* Default smaller font size for web and print */
+}
+
+.terms-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.terms-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.terms-header h1 {
+    font-size: 2.2em; /* Relative to body font size */
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.terms-header p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.term-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee; /* Light dashed separator */
+}
+
+.term-section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+}
+
+.term-section h2 {
+    font-size: 1.6em; /* Smaller headings */
+    color: #007bff;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #007bff; /* Underline for main sections */
+    display: inline-block; /* Make underline fit text */
+}
+
+.term-section h3 {
+    font-size: 1.3em;
+    color: #0056b3;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.term-section p {
+    font-size: 1em; /* Inherits from body (14px) */
+    margin-bottom: 10px;
+    text-align: justify; /* Justify text for a formal look */
+}
+
+.term-section ul {
+    list-style: disc; /* Default bullet points */
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.term-section ul li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.terms-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Print Specific Styles */
+@media print {
+    body {
+        font-size: 12pt; /* Smaller font for printing */
+        color: #000;
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+    }
+
+    .terms-container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 1cm; /* Margins for printing */
+        max-width: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .terms-header {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .term-section {
+        border-bottom: 1px dashed #ccc;
+        page-break-inside: avoid; /* Avoid breaking sections across pages */
+    }
+
+    .term-section h2 {
+        color: #000; /* Black for print */
+        border-bottom-color: #000;
+        page-break-after: avoid; /* Keep heading with its content */
+    }
+
+    .term-section h3 {
+        color: #000; /* Black for print */
+        page-break-after: avoid;
+    }
+
+    a {
+        text-decoration: none; /* Remove underlines from links */
+        color: #000; /* Black color for links */
+    }
+
+    /* Hide any interactive elements or non-essential items for print */
+    /* If you had navigation, buttons etc. in a real scenario, you'd hide them */
+}

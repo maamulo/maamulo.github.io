@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liiska Alaabta - Maamulo Software Company</title>
+    <link rel="stylesheet" href="inventory_items.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header internal-header">
+        <div class="container">
+            <div class="dashboard-header-left">
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1><i class="fas fa-box"></i> Liiska Alaabta</h1>
+            </div>
+            <nav class="internal-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-bell"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="profile-link">
+                            <img src="https://via.placeholder.com/30" alt="User" class="profile-pic">
+                            <span>User Name</span>
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">Settings</a>
+                            <a href="#">Profile</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="financial_overview.html"><i class="fas fa-chart-area"></i> Xogta Dhaqaalaha</a></li>
+                    <li><a href="invoices.html"><i class="fas fa-file-invoice-dollar"></i> Qaansheegyo</a></li>
+                    <li><a href="#"><i class="fas fa-receipt"></i> Kharashyada</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Macaamiisha</a></li>
+                    <li class="active"><a href="inventory_items.html"><i class="fas fa-box"></i> Alaabta</a></li>
+                    <li><a href="#"><i class="fas fa-chart-pie"></i> Warbixinno</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <section class="inventory-header-section">
+                <h2>Maareynta Alaabta</h2>
+                <button class="btn btn-primary add-item-btn" onclick="openAddItemModal()">
+                    <i class="fas fa-plus"></i> Ku Dar Alaab Cusub
+                </button>
+            </section>
+
+            <section class="inventory-list-section">
+                <div class="table-responsive">
+                    <table id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Magaca Alaabta</th>
+                                <th>Kategori</th>
+                                <th>Qiimaha Iibka</th>
+                                <th>Tirada Hadda</th>
+                                <th>Taariikhda Soo Galeysa</th>
+                                <th>Hawlgallada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-id="1">
+                                <td>P001</td>
+                                <td>Laptop Pro X</td>
+                                <td>Electronics</td>
+                                <td>$1200.00</td>
+                                <td>15</td>
+                                <td>2024-01-10</td>
+                                <td class="actions">
+                                    <button class="btn btn-edit" onclick="editItem(this)"><i class="fas fa-edit"></i> Wax ka beddel</button>
+                                    <button class="btn btn-delete" onclick="deleteItem(this)"><i class="fas fa-trash-alt"></i> Tirtir</button>
+                                </td>
+                            </tr>
+                            <tr data-id="2">
+                                <td>P002</td>
+                                <td>Wireless Mouse MX</td>
+                                <td>Accessories</td>
+                                <td>$45.00</td>
+                                <td>50</td>
+                                <td>2024-02-15</td>
+                                <td class="actions">
+                                    <button class="btn btn-edit" onclick="editItem(this)"><i class="fas fa-edit"></i> Wax ka beddel</button>
+                                    <button class="btn btn-delete" onclick="deleteItem(this)"><i class="fas fa-trash-alt"></i> Tirtir</button>
+                                </td>
+                            </tr>
+                            <tr data-id="3">
+                                <td>P003</td>
+                                <td>Office Chair Ergonomic</td>
+                                <td>Furniture</td>
+                                <td>$250.00</td>
+                                <td>8</td>
+                                <td>2024-03-20</td>
+                                <td class="actions">
+                                    <button class="btn btn-edit" onclick="editItem(this)"><i class="fas fa-edit"></i> Wax ka beddel</button>
+                                    <button class="btn btn-delete" onclick="deleteItem(this)"><i class="fas fa-trash-alt"></i> Tirtir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Ku Dar Alaab Cusub</h2>
+            <form id="itemForm">
+                <input type="hidden" id="itemId">
+                <div class="form-group">
+                    <label for="itemCode">Koodhka Alaabta:</label>
+                    <input type="text" id="itemCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemName">Magaca Alaabta:</label>
+                    <input type="text" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory">Kategori:</label>
+                    <input type="text" id="itemCategory" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemPrice">Qiimaha Iibka:</label>
+                    <input type="number" id="itemPrice" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemQuantity">Tirada:</label>
+                    <input type="number" id="itemQuantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemDate">Taariikhda Soo Galeysa:</label>
+                    <input type="date" id="itemDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="saveItemBtn">Keydi Alaabta</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple sidebar toggle (reused from dashboard)
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.dashboard-content').classList.toggle('shifted');
+        });
+
+        const itemModal = document.getElementById('itemModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const itemForm = document.getElementById('itemForm');
+        const itemId = document.getElementById('itemId');
+        const itemCode = document.getElementById('itemCode');
+        const itemName = document.getElementById('itemName');
+        const itemCategory = document.getElementById('itemCategory');
+        const itemPrice = document.getElementById('itemPrice');
+        const itemQuantity = document.getElementById('itemQuantity');
+        const itemDate = document.getElementById('itemDate');
+        const inventoryTableBody = document.getElementById('inventoryTable').getElementsByTagName('tbody')[0];
+
+        let currentItemId = 0; // For unique IDs in this demo (temporary)
+
+        // Open Add Item Modal
+        function openAddItemModal() {
+            modalTitle.textContent = 'Ku Dar Alaab Cusub';
+            itemForm.reset(); // Clear form
+            itemId.value = ''; // Ensure no ID is set for new item
+            itemModal.style.display = 'block';
+        }
+
+        // Open Edit Item Modal
+        function editItem(button) {
+            const row = button.closest('tr');
+            const cells = row.children;
+            
+            itemId.value = row.dataset.id; // Get data-id
+            itemCode.value = cells[0].textContent;
+            itemName.value = cells[1].textContent;
+            itemCategory.value = cells[2].textContent;
+            itemPrice.value = parseFloat(cells[3].textContent.replace('$', ''));
+            itemQuantity.value = parseInt(cells[4].textContent);
+            itemDate.value = cells[5].textContent;
+
+            modalTitle.textContent = 'Wax ka beddel Alaabta';
+            itemModal.style.display = 'block';
+        }
+
+        // Close Modal
+        function closeModal() {
+            itemModal.style.display = 'none';
+        }
+
+        // Handle Form Submission (Add or Update)
+        itemForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const id = itemId.value;
+            const code = itemCode.value;
+            const name = itemName.value;
+            const category = itemCategory.value;
+            const price = parseFloat(itemPrice.value).toFixed(2);
+            const quantity = parseInt(itemQuantity.value);
+            const date = itemDate.value;
+
+            if (id) {
+                // Update existing item
+                const rowToUpdate = inventoryTableBody.querySelector(`tr[data-id="${id}"]`);
+                if (rowToUpdate) {
+                    const cells = rowToUpdate.children;
+                    cells[0].textContent = code;
+                    cells[1].textContent = name;
+                    cells[2].textContent = category;
+                    cells[3].textContent = `$${price}`;
+                    cells[4].textContent = quantity;
+                    cells[5].textContent = date;
+                }
+            } else {
+                // Add new item
+                currentItemId++; // Increment ID for new item
+                const newRow = inventoryTableBody.insertRow();
+                newRow.dataset.id = currentItemId; // Set unique data-id for the new row
+                newRow.innerHTML = `
+                    <td>${code}</td>
+                    <td>${name}</td>
+                    <td>${category}</td>
+                    <td>$${price}</td>
+                    <td>${quantity}</td>
+                    <td>${date}</td>
+                    <td class="actions">
+                        <button class="btn btn-edit" onclick="editItem(this)"><i class="fas fa-edit"></i> Wax ka beddel</button>
+                        <button class="btn btn-delete" onclick="deleteItem(this)"><i class="fas fa-trash-alt"></i> Tirtir</button>
+                    </td>
+                `;
+            }
+
+            closeModal(); // Close modal after saving
+        });
+
+        // Delete Item
+        function deleteItem(button) {
+            if (confirm('Ma hubtaa inaad rabto inaad tirtirto alaabtan?')) {
+                const row = button.closest('tr');
+                row.remove();
+            }
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == itemModal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
